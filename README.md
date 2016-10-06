@@ -11,6 +11,16 @@ around the whole thing.
 
 ## Usage
 
+### Docker
+
+*Build*: `docker build -t lua-ml-microservice .`
+*Run*: `docker run -it lua-ml-microservice`
+
+### Host
+
+*Run*: `th app.lua`
+
+### Configure
 Edit app.lua to add your AWS credentials and handlers for your ML model.
 ```
 local bucket = s3:connect{
@@ -20,9 +30,9 @@ local bucket = s3:connect{
 }
 ```
 
-And to handle each file passed in the POST request, use:
+And to handle each file passed in the POST request edit `ml.lua`:
 ```
-function handleTrainFile(file)
+function M.handleTrainFile(file)
   -- TODO: Placeholder for real ML processing per row
   -- Dear ML Engineer who's gonna read this,
   -- Feel free to train your model inside this function.
